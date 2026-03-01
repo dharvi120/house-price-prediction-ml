@@ -1,6 +1,6 @@
 # 🏠 House Price Prediction using Linear Regression
 
-## 📌 Project Overview
+##  Project Overview
 
 This project builds a machine learning model to predict house prices using the California Housing dataset.
 
@@ -15,7 +15,7 @@ The goal is to implement an end-to-end regression pipeline including:
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 Dataset used: California Housing Dataset  
 Source: Scikit-learn built-in dataset
@@ -33,7 +33,7 @@ Target variable:
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - Python
 - NumPy
@@ -45,7 +45,7 @@ Target variable:
 
 ---
 
-## ⚙️ Workflow
+##  Workflow
 
 1. Data Loading
 2. Exploratory Data Analysis
@@ -59,7 +59,7 @@ Target variable:
 
 ---
 
-## 📈 Model Performance
+## Model Performance
 
 | Model | R² Score | MSE |
 |-------|----------|------|
@@ -70,13 +70,13 @@ R² ≈ 0.57 indicates the model explains approximately 57% of the variance in h
 
 ---
 
-## 📊 Visualization
+## Visualization
 
 Actual vs Predicted price comparison was plotted to evaluate prediction distribution and residual spread.
 
 ---
 
-## 💾 Model Saving
+##  Model Saving
 
 The trained model was saved using Joblib:
 
@@ -86,7 +86,7 @@ joblib.dump(model_scaled, "house_price_model.pkl")
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
 Clone the repository:
 
@@ -105,7 +105,7 @@ Run the notebook or execute the training script.
 
 ---
 
-## 📌 Future Improvements
+## Future Improvements
 
 - Hyperparameter tuning
 - Cross-validation
