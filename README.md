@@ -1,125 +1,185 @@
-🏠 House Price Prediction — Diagnostic-Driven Regression Analysis
- Project Overview
-This project builds a regression pipeline on the California Housing dataset with emphasis not only on prediction, but also on:
+# 🏠 House Price Prediction  
+## Diagnostic-Driven Regression Analysis (End-to-End ML Pipeline)
 
-Regularization
+---
 
-Multicollinearity detection
+## 📌 Project Overview
 
-Model stability validation
+This project builds a complete regression pipeline on the **California Housing dataset**, focusing not only on predictive performance but also on:
 
-Assumption diagnostics
+- Model stability  
+- Regularization effects  
+- Multicollinearity detection  
+- Assumption validation  
+- Bias–variance behavior  
 
-The goal was to move beyond basic model training and evaluate regression behavior under realistic constraints.
+The objective was to move beyond basic model training and perform structured regression diagnostics aligned with real-world ML engineering practices.
 
-Dataset
-Dataset: California Housing (Scikit-learn)
+---
 
-Target:
+## 📊 Dataset
 
-Median House Value
+**Dataset:** California Housing Dataset (Scikit-learn)
 
-Features:
+**Target Variable:**
+- Median House Value
 
-Median income
+**Key Features Include:**
+- Median income  
+- House age  
+- Average rooms  
+- Average bedrooms  
+- Population  
+- Latitude  
+- Longitude  
 
-House age
+---
 
-Average rooms
+## 🛠 Tech Stack
 
-Population
+- Python  
+- NumPy  
+- Pandas  
+- Matplotlib  
+- Seaborn  
+- Scikit-learn  
+- Statsmodels (for VIF analysis)  
+- Joblib  
 
-Latitude & longitude
+---
 
-etc.
+## 🔄 End-to-End Workflow
 
-Tech Stack
-Python
+### 1️⃣ Data Preparation
+- Loaded dataset using Scikit-learn
+- Converted to Pandas DataFrame
+- Checked for missing values
+- Verified feature distributions
 
-NumPy
+---
 
-Pandas
+### 2️⃣ Exploratory Data Analysis (EDA)
+- Correlation heatmap
+- Feature-target relationship inspection
+- Distribution analysis
 
-Matplotlib
+---
 
-Seaborn
+### 3️⃣ Train-Test Split
+- 80/20 split
+- Random state fixed for reproducibility
 
-Scikit-learn
+---
 
-Statsmodels (for VIF)
+### 4️⃣ Feature Scaling
+- StandardScaler applied to ensure:
+  - Stable gradient-based optimization
+  - Comparable feature magnitudes
+  - Reduced condition number
 
-Joblib
+---
 
- Workflow
-Data Cleaning & EDA
+### 5️⃣ Model Training
 
-Correlation Analysis
+Implemented and compared:
 
-Multicollinearity Detection using VIF
+- **Linear Regression (OLS)** — Baseline  
+- **Ridge Regression (L2 Regularization)** — Variance control  
+- **Lasso Regression (L1 Regularization)** — Sparsity and feature shrinkage  
 
-Train-Test Split (80/20)
+---
 
-Feature Scaling (StandardScaler)
+### 6️⃣ Cross-Validation
 
-Model Training:
+- 5-Fold Cross Validation
+- Evaluated mean R² across folds
+- Reduced dependency on single train-test split
+- Validated model stability
 
-OLS (Linear Regression)
+---
 
-Ridge Regression (L2)
+### 7️⃣ Multicollinearity Detection
 
-Lasso Regression (L1)
+- Computed **Variance Inflation Factor (VIF)**
+- Analyzed feature-level inflation
+- Discussed coefficient instability risks
+- Evaluated impact of regularization on multicollinearity
 
-5-Fold Cross-Validation
+---
 
-Residual Diagnostics
+### 8️⃣ Residual Diagnostics
 
-Model Evaluation
+Performed assumption checks:
 
-Model Persistence
+- Residuals vs Predicted plot
+- Residual distribution analysis
+- Homoscedasticity inspection
 
- Model Comparison
-Model	Test R²	Cross-Val Mean R²	Notes
-OLS	0.575 0.6115	Baseline
-Ridge	0.57 0.6115	Reduced variance
-Lasso	  	-0.0003	Feature shrinkage
+This validates core linear regression assumptions.
 
+---
 
-Diagnostic Analysis
-Multicollinearity
-Computed VIF for each feature.
+### 9️⃣ Learning Behavior (Bias–Variance Insight)
 
-Identified features with high inflation factors.
+- Generated learning curves
+- Compared training vs validation performance
+- Identified underfitting/overfitting patterns
 
-Compared stability under Ridge regularization.
+---
 
-Residual Analysis
-Residual vs Predicted plot examined.
+### 🔟 Model Comparison
 
-Checked homoscedasticity assumption.
+| Model | Test R² | Cross-Val Mean R² | Observations |
+|-------|----------|------------------|--------------|
+| OLS | ~0.57 | ~0.61 | Strong baseline performance |
+| Ridge | ~0.57 | ~0.61 | Improved coefficient stability |
+| Lasso | ~0.00 (alpha=1.0) | ~0.00 | Underfitting due to strong regularization |
 
-Residual distribution analyzed.
+> Lasso performance indicates that aggressive L1 regularization removes predictive information in this dataset.
 
- Key Observations
-Regularization improves coefficient stability.
+---
 
-Cross-validation provides more reliable performance estimates.
+## 📈 Key Insights
 
-L1 regularization introduces sparsity.
+- Regularization improves numerical stability.
+- Ridge reduces coefficient variance without major performance change.
+- Lasso may severely underfit if alpha is too large.
+- Cross-validation provides more reliable generalization estimates.
+- Multicollinearity impacts coefficient interpretability more than raw performance.
 
-Multicollinearity affects variance of estimates.
+---
 
- Model Saving
+## 🧠 Engineering Considerations
+
+- Scaling improves gradient convergence.
+- Condition number analysis performed for matrix stability.
+- Residual diagnostics ensure assumption validation.
+- Model comparison includes both predictive and stability evaluation.
+
+---
+
+## 💾 Model Persistence
+
+Model saved using Joblib:
+
+```python
 joblib.dump(model_scaled, "house_price_model.pkl")
+```
 
-🚀 Future Extensions
-Hyperparameter tuning using GridSearchCV
+---
 
-Learning curve analysis
+## 🚀 Future Enhancements
 
-Feature interaction exploration
+- Hyperparameter tuning using GridSearchCV  
+- Non-linear model comparison (e.g., Random Forest)  
+- Feature interaction engineering  
+- Deployment pipeline (FastAPI / Streamlit)  
+- Monitoring and retraining workflow  
 
-Deployment pipeline
+---
 
-👩‍💻 Author
-Dharvi Sharma
-B.Tech CSE (AI/ML)
+## 👩‍💻 Author
+
+**Dharvi Sharma**  
+B.Tech CSE (AI/ML)  
+Focused on building diagnostic-driven ML systems.
