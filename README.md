@@ -1,125 +1,125 @@
-# 🏠 House Price Prediction using Linear Regression
+🏠 House Price Prediction — Diagnostic-Driven Regression Analysis
+ Project Overview
+This project builds a regression pipeline on the California Housing dataset with emphasis not only on prediction, but also on:
 
-##  Project Overview
+Regularization
 
-This project builds a machine learning model to predict house prices using the California Housing dataset.
+Multicollinearity detection
 
-The goal is to implement an end-to-end regression pipeline including:
-- Data loading
-- Exploratory Data Analysis (EDA)
-- Feature scaling
-- Model training
-- Model comparison
-- Evaluation
-- Model persistence
+Model stability validation
 
----
+Assumption diagnostics
 
-##  Dataset
+The goal was to move beyond basic model training and evaluate regression behavior under realistic constraints.
 
-Dataset used: California Housing Dataset  
-Source: Scikit-learn built-in dataset
+Dataset
+Dataset: California Housing (Scikit-learn)
 
-Features include:
-- Median income
-- House age
-- Average rooms
-- Population
-- Latitude & longitude
-- And more
+Target:
 
-Target variable:
-- Median house value (Price)
+Median House Value
 
----
+Features:
 
-##  Tech Stack
+Median income
 
-- Python
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-- Scikit-learn
-- Joblib
+House age
 
----
+Average rooms
 
-##  Workflow
+Population
 
-1. Data Loading
-2. Exploratory Data Analysis
-3. Correlation Analysis
-4. Train-Test Split (80/20)
-5. Feature Scaling using StandardScaler
-6. Linear Regression Model
-7. Ridge Regression Model
-8. Model Evaluation
-9. Model Saving
+Latitude & longitude
 
----
+etc.
 
-## Model Performance
+Tech Stack
+Python
 
-| Model | R² Score | MSE |
-|-------|----------|------|
-| Linear Regression | 0.575 | 0.556 |
-| Ridge Regression | ~0.57 | ~0.55 |
+NumPy
 
-R² ≈ 0.57 indicates the model explains approximately 57% of the variance in housing prices.
+Pandas
 
----
+Matplotlib
 
-## Visualization
+Seaborn
 
-Actual vs Predicted price comparison was plotted to evaluate prediction distribution and residual spread.
+Scikit-learn
 
----
+Statsmodels (for VIF)
 
-##  Model Saving
+Joblib
 
-The trained model was saved using Joblib:
+ Workflow
+Data Cleaning & EDA
 
-```python
+Correlation Analysis
+
+Multicollinearity Detection using VIF
+
+Train-Test Split (80/20)
+
+Feature Scaling (StandardScaler)
+
+Model Training:
+
+OLS (Linear Regression)
+
+Ridge Regression (L2)
+
+Lasso Regression (L1)
+
+5-Fold Cross-Validation
+
+Residual Diagnostics
+
+Model Evaluation
+
+Model Persistence
+
+ Model Comparison
+Model	Test R²	Cross-Val Mean R²	Notes
+OLS	0.575 0.6115	Baseline
+Ridge	0.57 0.6115	Reduced variance
+Lasso	  	-0.0003	Feature shrinkage
+
+
+Diagnostic Analysis
+Multicollinearity
+Computed VIF for each feature.
+
+Identified features with high inflation factors.
+
+Compared stability under Ridge regularization.
+
+Residual Analysis
+Residual vs Predicted plot examined.
+
+Checked homoscedasticity assumption.
+
+Residual distribution analyzed.
+
+ Key Observations
+Regularization improves coefficient stability.
+
+Cross-validation provides more reliable performance estimates.
+
+L1 regularization introduces sparsity.
+
+Multicollinearity affects variance of estimates.
+
+ Model Saving
 joblib.dump(model_scaled, "house_price_model.pkl")
-```
 
----
+🚀 Future Extensions
+Hyperparameter tuning using GridSearchCV
 
-##  How to Run
+Learning curve analysis
 
-Clone the repository:
+Feature interaction exploration
 
-```bash
-git clone https://github.com/yourusername/house_price_prediction.git
-cd house_price_prediction
-```
+Deployment pipeline
 
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run the notebook or execute the training script.
-
----
-
-## Future Improvements
-
-- Hyperparameter tuning
-- Cross-validation
-- Feature engineering
-- Polynomial regression
-- Deployment using Streamlit
-- MLOps pipeline integration
-
----
-
-## 👩‍💻 Author
-
-Dharvi Sharma  
+👩‍💻 Author
+Dharvi Sharma
 B.Tech CSE (AI/ML)
-
----
-
